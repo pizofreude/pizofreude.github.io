@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: pizofreude.github.io
+Token: 99e09e792e23826fe5d7f48c59aedf31af91f73911f8d171450fc5511b281903
