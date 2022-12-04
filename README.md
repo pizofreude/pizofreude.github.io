@@ -1,4 +1,4 @@
 # pizofreude.github.io
 
-Pizofreude Github Pages
+Welcome to Pizofreude Github Pages
 @https://pizofreude.github.io/
