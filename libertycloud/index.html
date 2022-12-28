@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Liberty is amazing.</title>
+  <link rel="icon" type="image/x-icon" href="cloud.svg">
+  <style>
+    @font-face {
+      font-family: Roboto;
+      src: url(Roboto/Roboto-Italic.ttf);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #15191c;
+        color: lightslategray;
+      }
+      a:link {
+        text-decoration: none;
+        color: #63ace8;
+      }
+      a:visited {
+        text-decoration: none;
+        color: #8c6cc3;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      a:active {
+        text-decoration: underline;
+        color: #8c6cc3;
+      }
+      .box {
+        background-color: #262b2f;
+      }
+      .btn {
+        background-color: #17171c;
+        border: 2px #473d3a;
+        color: lightslategray;
+      }
+      .btn:hover{
+        background-color: #000000;
+      }
+    }
+    @media (prefers-color-scheme: light) {
+      body {
+        background: lightslategray;
+        color: lightslategray;
+      }
+      a:link {
+        text-decoration: none;
+        color: rgb(45, 89, 134);
+      }
+      a:visited {
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      a:active {
+        text-decoration: underline;
+      }
+      .box {
+        background-color: rgba(255, 255, 255, 0.9);
+      }
+      .btn {
+        background-color: white;
+        border: 2px lightslategray;
+        color: black;
+      }
+      .btn:hover{
+        background-color: lightslategray;
+        border: 2px black;
+      }
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .container {
+      display: flex;
+      row-gap: 10px;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .header {
+      align-self: center;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 700px;
+      text-align: center;
+    }
+
+    .waveplayer {
+      align-self: center;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 700px;
+      text-align: center;
+    }
+
+    .header__icon {
+      height: 50px;
+      width: 50px;
+      margin-top: 1rem;
+    }
+
+    .header__headline {
+      margin-top: 20px;
+      font-size: xx-large;
+    }
+
+    .btn {
+      margin-bottom: 2%;
+    }
+
+    svg-icon {
+      display: inline-block;
+      /*  with block the element will behave like a DIV */
+      --size: 60px;
+      width: var(--size);
+      height: var(--size);
+      margin-top: 2%;
+    }
+  </style>
+  <script src="wavesurfer.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header box">
+      <svg-icon is="cloud"></svg-icon>
+      <p class="header__headline">
+        Hello from libertycloud!
+      </p>
+    </div>
+
+    <div class="waveplayer box">
+      <p class="waveplayer__headline">
+        A beautiful piece of music from Joe Hisaishi, "One Summer's Day".<br> Listen to this masterpiece on YouTube: <a href="https://www.youtube.com/watch?v=TK1Ij_-mank">https://www.youtube.com/watch?v=TK1Ij_-mank</a><br>
+        Played by <a href="https://github.com/vimpostor">@vimpostor</a>:
+      </p>
+      <div id="waveform"></div>
+
+      <button class="btn" onclick="wavesurfer.skipBackward()">
+        <i class="fa fa-step-backward"></i>
+        Backward
+      </button>
+
+      <button class="btn" onclick="wavesurfer.playPause()">
+        <i class="fa fa-play"></i>
+        Play
+        /
+        <i class="fa fa-pause"></i>
+        Pause
+      </button>
+
+      <button class="btn" onclick="wavesurfer.skipForward()">
+        <i class="fa fa-step-forward"></i>
+        Forward
+      </button>
+
+      <button class="btn" onclick="wavesurfer.toggleMute()">
+        <i class="fa fa-volume-off"></i>
+        Toggle Mute
+      </button>
+
+    </div>
+  </div>
+  <script>
+    var wavesurfer = WaveSurfer.create({
+      container: '#waveform',
+      waveColor: 'lightslategrey',
+      progressColor: 'darkslategrey'
+    });
+    wavesurfer.load('One_Summers_day_Projekt.ogg');
+
+    ((t, e = { path: (t, e = "") => `<path d='${t}' ${e}/>` }, i = { stroke: "#000", rect: "<rect width='100%' height='100%' fill='{tile}' {border}/>", fill: "none", tile: "none", img: 1, width: 1, scale: 1, opacity: 1, is: "", border: "", filter: "", top: "", v1: "", v2: "", v3: "", box: 9, rotate: 0, xy: 0, w: 0, h: 0, api: [t, e] }) => { customElements.define("svg-icon", class extends HTMLElement { static get observedAttributes() { return Object.keys(i) } attributeChangedCallback() { this.svg() } svg(s = this, r = s.A || Object.keys(s.A = { ...i }).map((t => Object.defineProperty(s, t, { set: e => s.setAttribute(t, e), get: () => s.getAttribute(t) || getComputedStyle(s).getPropertyValue("--svg-icon-" + t).replace(/"/g, "").trim() || s.A[t] }, e[t] = e => (s.A[t] = e, "")))), l, a = (t[s.is] || "").split`;`.map((t => ([r, l] = t.trim().split`:`, e[r] ? e[r].apply(s, l.split`,`) : t))).join``, o = s.box / 2, c = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 ${s.w || s.box} ${s.h || s.box}' style='vertical-align:top'>${s.rect}<g stroke-width='{width}' stroke='{stroke}' fill='{fill}' opacity='{opacity}' filter='{filter}' transform='translate({xy}) matrix({scale} 0 0 {scale} ${o - o * s.scale} ${o - o * s.scale}) rotate({rotate} ${o} ${o})'>${a}</g>${s.top}</svg>`.replace(/{\s?([^{}\s]*)\s?}/g, ((t, e) => s[e]))) { return s.innerHTML = 1 == s.img ? `<img style='vertical-align:top' src="data:image/svg+xml,${c.replace(/#/g, "%23")}">` : c } }) })(
+      { "cloud": "box:24;width:2;stroke:lightslategray;path:M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" });
+  </script>
+</body>
+
+</html>
