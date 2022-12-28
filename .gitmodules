@@ -1,0 +1,3 @@
+[submodule "libertycloud_webpage"]
+	path = libertycloud_webpage
+	url = https://codeberg.org/Pizofreude/libertycloud_webpage.git
